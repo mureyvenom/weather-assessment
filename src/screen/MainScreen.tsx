@@ -153,7 +153,7 @@ const MainScreen = () => {
                       height: '100%',
                     }}
                     source={{
-                      uri: `http://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`,
+                      uri: `https://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`,
                     }}
                   />
                 )}
@@ -170,7 +170,7 @@ const MainScreen = () => {
                   return (
                     <ForecastCard
                       key={f.dt}
-                      icon={`http://openweathermap.org/img/wn/${f.weather[0].icon}@2x.png`}
+                      icon={`https://openweathermap.org/img/wn/${f.weather[0].icon}@2x.png`}
                       temp={f.main.temp.toFixed()}
                       time={new Date(f.dt * 1000)}
                     />
