@@ -1,4 +1,4 @@
-# Metacare front end task
+# Ashipa electric react native assessment
 
 This project was created with the react native typescript template
 
@@ -6,7 +6,7 @@ This project was created with the react native typescript template
 
 #### Install project dependencies using
 
-### `yarn`
+### `yarn or npm install`
 
 #### For ios only
 
@@ -14,4 +14,4 @@ This project was created with the react native typescript template
 
 #### After installing all dependencies you can run
 
-### `yarn android or yarn ios to run the app`
+### `(yarn android or yarn ios) for yarn and (npm run android or npm run ios) to run the app`

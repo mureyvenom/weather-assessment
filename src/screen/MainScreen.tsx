@@ -14,7 +14,6 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import { COLORS } from '../utils/colors';
 import Geolocation from '@react-native-community/geolocation';
 import weatherApi from '../utils/weatherApi';
-import { AxiosError } from 'axios';
 import { ForecastResponse, WeatherResponse } from '../utils/types';
 import ForecastCard from '../components/ForecastCard';
 
@@ -46,8 +45,6 @@ const MainScreen = () => {
         setLoading(false);
         setHasError(false);
       } catch (error) {
-        const err = error as AxiosError;
-        console.log('axErr', err.request);
         setLoading(false);
         setHasError(true);
         Alert.alert(
