@@ -125,95 +125,104 @@ const MainScreen = () => {
             <Entypo name="menu" size={24} color="#000" />
           </TouchableOpacity>
         </View>
-        <View style={styles.mainBody}>
-          <View style={styles.padded}>
-            <Text style={styles.todayText}>Today</Text>
-            <Text style={styles.mainTemp}>
-              {result?.main.temp.toFixed(0)}°C
-            </Text>
-            <View style={styles.weatherView}>
-              <View>
-                <Text style={styles.weatherTitle}>
-                  {result?.weather[0].main}
-                </Text>
-                <Text style={styles.weatherSubtitle}>
-                  {result?.weather[0].description}
-                </Text>
-              </View>
-              <View
-                style={{
-                  height: 100,
-                  width: 100,
-                }}>
-                {result?.weather[0] && (
-                  <Image
-                    resizeMethod="scale"
-                    resizeMode="contain"
-                    style={{
-                      height: '100%',
-                    }}
-                    source={{
-                      uri: `https://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`,
-                    }}
-                  />
-                )}
-              </View>
-            </View>
-          </View>
-          <View>
-            <ScrollView horizontal>
-              {forecast?.list
-                .filter(
-                  f => new Date(f.dt * 1000).getDate() === new Date().getDate(),
-                )
-                .map(f => {
-                  return (
-                    <ForecastCard
-                      key={f.dt}
-                      icon={`https://openweathermap.org/img/wn/${f.weather[0].icon}@2x.png`}
-                      temp={f.main.temp.toFixed()}
-                      time={new Date(f.dt * 1000)}
+        <ScrollView>
+          <View style={styles.mainBody}>
+            <View style={styles.padded}>
+              <Text style={styles.todayText}>Today</Text>
+              <Text style={styles.mainTemp}>
+                {result?.main.temp.toFixed(0)}°C
+              </Text>
+              <View style={styles.weatherView}>
+                <View>
+                  <Text style={styles.weatherTitle}>
+                    {result?.weather[0].main}
+                  </Text>
+                  <Text style={styles.weatherSubtitle}>
+                    {result?.weather[0].description}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    height: 100,
+                    width: 100,
+                  }}>
+                  {result?.weather[0] && (
+                    <Image
+                      resizeMethod="scale"
+                      resizeMode="contain"
+                      style={{
+                        height: '100%',
+                      }}
+                      source={{
+                        uri: `https://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`,
+                      }}
                     />
-                  );
-                })}
-            </ScrollView>
-            <View style={styles.pressureContainer}>
-              <View style={styles.pressureCard}>
-                <Text style={styles.pressureText}>Pressure</Text>
-                <Text
-                  style={[
-                    styles.pressureText,
-                    {
-                      marginHorizontal: 4,
-                    },
-                  ]}>
-                  |
-                </Text>
-                <Text
-                  style={[styles.pressureText, { fontFamily: 'DMSans-Bold' }]}>
-                  30
-                </Text>
-                <Text style={styles.pressureText}>hPa</Text>
+                  )}
+                </View>
               </View>
-              <View style={styles.pressureCard}>
-                <Text style={styles.pressureText}>Humidity</Text>
-                <Text
-                  style={[
-                    styles.pressureText,
-                    {
-                      marginHorizontal: 4,
-                    },
-                  ]}>
-                  |
-                </Text>
-                <Text
-                  style={[styles.pressureText, { fontFamily: 'DMSans-Bold' }]}>
-                  10%
-                </Text>
+            </View>
+            <View>
+              <ScrollView horizontal>
+                {forecast?.list
+                  .filter(
+                    f =>
+                      new Date(f.dt * 1000).getDate() === new Date().getDate(),
+                  )
+                  .map(f => {
+                    return (
+                      <ForecastCard
+                        key={f.dt}
+                        icon={`https://openweathermap.org/img/wn/${f.weather[0].icon}@2x.png`}
+                        temp={f.main.temp.toFixed()}
+                        time={new Date(f.dt * 1000)}
+                      />
+                    );
+                  })}
+              </ScrollView>
+              <View style={styles.pressureContainer}>
+                <View style={styles.pressureCard}>
+                  <Text style={styles.pressureText}>Pressure</Text>
+                  <Text
+                    style={[
+                      styles.pressureText,
+                      {
+                        marginHorizontal: 4,
+                      },
+                    ]}>
+                    |
+                  </Text>
+                  <Text
+                    style={[
+                      styles.pressureText,
+                      { fontFamily: 'DMSans-Bold' },
+                    ]}>
+                    30
+                  </Text>
+                  <Text style={styles.pressureText}>hPa</Text>
+                </View>
+                <View style={styles.pressureCard}>
+                  <Text style={styles.pressureText}>Humidity</Text>
+                  <Text
+                    style={[
+                      styles.pressureText,
+                      {
+                        marginHorizontal: 4,
+                      },
+                    ]}>
+                    |
+                  </Text>
+                  <Text
+                    style={[
+                      styles.pressureText,
+                      { fontFamily: 'DMSans-Bold' },
+                    ]}>
+                    10%
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
-        </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
